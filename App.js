@@ -155,10 +155,9 @@ const datasource = [
   },
 ];
 
-// Function to render each Pokémon item
 const renderItem = ({ item }) => {
-  const [firstName, ...lastNameParts] = item.name.split(' '); // Split name into first and last
-  const lastName = lastNameParts.join(' '); // Rejoin the rest as last name
+  const [firstName, ...lastNameParts] = item.name.split(' ');
+  const lastName = lastNameParts.join(' ');
 
   return (
       <TouchableOpacity style={styles.item}>
@@ -179,7 +178,6 @@ const App = () => {
       <View style={styles.container}>
         <StatusBar hidden={true} />
 
-        {/* Fixed Header */}
         <View style={styles.fixedHeader}>
           <Image
               source={require('./img/lcs.png')}
@@ -188,12 +186,11 @@ const App = () => {
           <Text style={styles.appTitle}>Team Roster</Text>
         </View>
 
-        {/* Section List */}
         <SectionList
             sections={datasource}
             keyExtractor={(item) => item.name}
             renderItem={renderItem}
-            stickyHeaderIndices={[0]} // Lock the first header (Add Pokémon button container)
+            stickyHeaderIndices={[0]}
             renderSectionHeader={({ section: { title } }) => (
                 <View style={[styles.header, title === 'Goalkeepers' ? styles.gkHeader : title === 'Defenders' ? styles.defHeader : title === 'Midfielders' ? styles.midHeader : styles.fwdHeader]}>
                   <Text style={styles.headerText}>{title}</Text>
@@ -204,7 +201,6 @@ const App = () => {
   );
 };
 
-// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -220,7 +216,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'navy',
     marginBottom: 1,
     padding: 10,
-    paddingTop: 20, // For better spacing on devices with notches
+    paddingTop: 20,
   },
 
   logo: {
